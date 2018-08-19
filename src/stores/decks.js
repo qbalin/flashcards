@@ -3,7 +3,58 @@ import localforage from 'localforage';
 const initialState = [];
 
 
-//localforage.setItem('decks', [1, 2, 3, 4, 5]);
+localforage.setItem('decks', [
+  {
+    name: 'Countries',
+    cards: [
+      {
+        sides: [
+          {
+            content: 'Paris',
+          },
+          {
+            content: 'France',
+          },
+        ],
+      },
+      {
+        sides: [
+          {
+            content: 'Washington',
+          },
+          {
+            content: 'USA',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Chinese',
+    cards: [
+      {
+        sides: [
+          {
+            content: '买',
+          },
+          {
+            content: 'to buy',
+          },
+        ],
+      },
+      {
+        sides: [
+          {
+            content: '朋友',
+          },
+          {
+            content: 'friend',
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 
 const SET_DECKS = 'SET_DECKS';
