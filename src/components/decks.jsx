@@ -1,7 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { loadDecks } from '../stores/decks';
 
 class Decks extends React.Component {
+  componentDidMount() {
+    console.log('props', this.props);
+    this.props.loadDecks();
+  }
+
   renderCard(n) {
     return (
       <div key={n} className="card">
@@ -18,7 +24,7 @@ class Decks extends React.Component {
     return (
       <div>
         <div className="card-deck">
-          {this.props.decks.map(n => this.renderCard(n))}
+          {this.props.decks && this.props.decks.map(n => this.renderCard(n))}
         </div>
       </div>
     );
@@ -26,7 +32,11 @@ class Decks extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    decks: state.decks,
-  });
+  decks: state.decks,
+});
 
-export default connect(mapStateToProps)(Decks);
+const mapDispatchToProps = dispatch => ({
+  loadDecks: () => dispatch(loadDecks()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Decks);
