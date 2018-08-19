@@ -13,4 +13,20 @@ module.exports = {
       template: 'src/index_template.html',
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            plugins: ['transform-class-properties'],
+          },
+        },
+      },
+
+    ],
+  },
 };
