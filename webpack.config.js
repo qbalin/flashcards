@@ -4,18 +4,21 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index_template.html',
     }),
-     new WorkboxPlugin.InjectManifest({
+    new WorkboxPlugin.InjectManifest({
       swSrc: './src/sw.js',
-    })
+    }),
   ],
   module: {
     rules: [
