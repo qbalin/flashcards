@@ -15,14 +15,16 @@ export default class Routes extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <div className="container">
+        <div>
           <Navbar />
-          <Router>
-            <div>
-              <Route exact path="/" component={Decks} />
-              <Route exact path="/decks/:deckName" component={Deck} />
-            </div>
-          </Router>
+          <div className="container">
+            <Router>
+              <div>
+                <Route exact path="/" component={Decks} />
+                <Route exact path="/decks/:deckName" component={Deck} />
+              </div>
+            </Router>
+          </div>
         </div>
       </Provider>
     );

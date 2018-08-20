@@ -9,8 +9,8 @@ class Decks extends React.Component {
   }
 
   renderDeck = deck => (
-    <div key={deck.name} className="card">
-      <div className="card-body">
+    <div key={deck.name} className="card text-center">
+      <div className="card-body ">
         <h5 className="card-title">
           <Link to={`/decks/${deck.name}`}>{deck.name}</Link>
         </h5>
