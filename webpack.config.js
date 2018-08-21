@@ -10,7 +10,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: 'public/index.html'
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
