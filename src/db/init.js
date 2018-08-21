@@ -28,22 +28,19 @@ import idb from 'idb';
     }
   });
 
-
-  dbPromise.then((db) => {
-    const tx = db.transaction('decks', 'readwrite');
-    tx.objectStore('decks').add({
-      name: 'Chinese'
+  const addObj = (obj, objectStoreName) => {
+  	dbPromise.then((db) => {
+      const tx = db.transaction(objectStoreName, 'readwrite');
+      tx.objectStore(objectStoreName).add(obj);
+      return tx.complete;
     });
-    return tx.complete;
-  });
-
-  dbPromise.then((db) => {
-    const tx = db.transaction('decks', 'readwrite');
-    tx.objectStore('decks').add({
-      name: 'Countries'
-    });
-    return tx.complete;
-  });
+  };
 
 
+  // ['Chinese', 'Countries'].forEach(name => addObj({ name }, 'decks'));
+
+  // ['', ''].forEach((name, idx) => addObj({ deckId: idx + 1 }, 'cards'));
+
+  // [{ content: '买' }, { content: 'to buy' }, { content: 'mai' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 1 }), 'sides'));
+  // [{ content: 'Paris' }, { content: 'France' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 2 }), 'sides'));
 }());

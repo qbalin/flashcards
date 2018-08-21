@@ -21,7 +21,7 @@ export default class Routes extends React.Component {
             <Router>
               <div>
                 <Route exact path="/" component={Decks} />
-                <Route exact path="/decks/:deckName" component={Deck} />
+                <Route exact path="/decks/:deckId" component={Deck} />
               </div>
             </Router>
           </div>
