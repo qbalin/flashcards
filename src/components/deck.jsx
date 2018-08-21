@@ -4,7 +4,8 @@ import { loadCards } from '../stores/cards';
 
 class Deck extends React.Component {
   componentDidMount() {
-    this.props.loadCards();
+    console.log('will load', this.props.deckId);
+    this.props.loadCards(this.props.deckId);
   }
 
   renderSide = side => (
@@ -33,14 +34,15 @@ class Deck extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { deckId } = ownProps.match.params;
-  return { cards: state.cards };
+  return {
+    cards: state.cards,
+    deckId: parseInt(deckId),
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadCards: () => dispatch(loadCards(1)),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  loadCards: deckId => dispatch(loadCards(deckId)),
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Deck);

@@ -7,12 +7,11 @@ module.exports = {
   entry: ['./src/db/init.js', './src/index.jsx'],
   output: {
     path: path.resolve(__dirname, 'public'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   devServer: {
-    historyApiFallback: {
-      index: 'public/index.html'
-    },
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

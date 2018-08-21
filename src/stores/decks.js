@@ -8,12 +8,12 @@ const setDecks = decks => ({ type: SET_DECKS, decks });
 
 export const loadDecks = () => (dispatch) => {
   const dbPromise = idb.open('flashcards');
-  dbPromise.then(db => {
+  dbPromise.then((db) => {
     const tx = db.transaction('decks', 'readonly');
     const store = tx.objectStore('decks');
     return store.getAll();
-  }).then(decks => {
-    console.log('decks',decks)
+  }).then((decks) => {
+    console.log('decks', decks);
     dispatch(setDecks(decks));
   });
 };
