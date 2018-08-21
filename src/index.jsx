@@ -8,6 +8,7 @@ import Router from './components/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import reducer from './stores';
+import { plop } from './db/init';
 
 const loggerMiddleware = createLogger();
 
