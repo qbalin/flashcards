@@ -19,18 +19,18 @@ class Decks extends React.Component {
   )
 
   render() {
-    return (
+    return this.props.decks ? (
       <div>
         <div className="card-deck">
           {this.props.decks.map(deck => this.renderDeck(deck))}
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 
 const mapStateToProps = state => ({
-  decks: state.decks,
+  decks: state.decks.decks,
 });
 
 const mapDispatchToProps = dispatch => ({

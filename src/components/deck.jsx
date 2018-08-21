@@ -1,31 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadCards } from '../stores/cards';
+import { loadFullDeck } from '../stores/decks';
 
 class Deck extends React.Component {
   componentDidMount() {
-    console.log('will load', this.props.deckId);
-    this.props.loadCards(this.props.deckId);
+    this.props.loadFullDeck(this.props.deckId);
   }
 
   renderSide = side => (
-    <p className="card-text">{side.content}</p>
+    <p className="card-text" key={side.id}>{side.content}</p>
   )
 
   renderCard = card => (
     <div key={card.id} className="card">
       <div className="card-body">
-        {card.id}
+        {card.sides.map(this.renderSide)}
       </div>
     </div>
   )
 
   render() {
-    return this.props.cards ? (
+    return this.props.deck ? (
       <div>
         <button type="button" className="btn btn-outline-primary">Start</button>
         <div className="card-deck">
-          {this.props.cards.map(this.renderCard)}
+          {this.props.deck.cards.map(this.renderCard)}
         </div>
       </div>
     ) : null;
@@ -35,13 +34,13 @@ class Deck extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const { deckId } = ownProps.match.params;
   return {
-    cards: state.cards,
+    deck: state.decks.currentDeck,
     deckId: parseInt(deckId),
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  loadCards: deckId => dispatch(loadCards(deckId)),
+  loadFullDeck: deckId => dispatch(loadFullDeck(deckId)),
 });
 
 
