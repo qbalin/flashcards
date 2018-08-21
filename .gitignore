@@ -1,4 +1,3 @@
 node_modules
-public/bundle.js
-public/precache-manifest*
 .DS_Store
+public
