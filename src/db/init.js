@@ -39,9 +39,23 @@ import idb from 'idb';
 
   // ['Chinese', 'Countries'].forEach(name => addObj({ name }, 'decks'));
 
-  // [''].forEach((name, idx) => addObj({ deckId: idx + 1 }, 'cards'));
+  // [''].forEach((name, idx) => addObj({ deckId: 2 }, 'cards'));
+  // ['', '', '', '', '', '', '', '', '', '', ''].forEach((name, idx) => addObj({ deckId: 1 }, 'cards'));
 
-  // [{ content: '买' }, { content: 'to buy' }, { content: 'mai' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 1 }), 'sides'));
-  // [{ content: '去' }, { content: 'to go' }, { content: 'qu' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 3 }), 'sides'));
-  // [{ content: 'Paris' }, { content: 'France' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 2 }), 'sides'));
+  // [{ content: 'Paris' }, { content: 'France' }].forEach((side, idx) => addObj(Object.assign({}, side, { cardId: 1 }), 'sides'));
+  // [
+  //   ['去', 'to go', 'qu'],
+  //   ['我', 'me, I', 'wo'],
+  //   ['你', 'you', 'ni'],
+  //   ['他', 'he', 'ta'],
+  //   ['有', 'to have, there is', 'you'],
+  //   ['家', 'home', 'jia'],
+  //   ['是', 'to be', 'shi'],
+  //   ['天', 'sky', 'tian'],
+  //   ['书', 'book', 'shu'],
+  //   ['不', 'not, negation', 'bu'],
+  //   ['得', 'to have to', 'dei'],
+  // ].forEach((arr, i) => {
+  //   arr.forEach((side, idx) => addObj(Object.assign({}, { content: side }, { cardId: i + 2 }), 'sides'));
+  // });
 }());
