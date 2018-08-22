@@ -13,7 +13,7 @@ class Deck extends React.Component {
   )
 
   renderCard = card => (
-    <div key={card.id} className="card">
+    <div key={card.id} className="card" style={{'min-width': '10rem', 'max-width': '10rem'}}>
       <ul className="list-group list-group-flush">
         {card.sides.map(this.renderSide)}
       </ul>
