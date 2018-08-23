@@ -20,17 +20,17 @@ export const loadDecks = () => (dispatch) => {
   });
 };
 
-const getDeck = deckId => {
+const getDeck = (deckId) => {
   const dbPromise = idb.open('flashcards');
 
   return dbPromise.then((db) => {
     const tx = db.transaction('decks', 'readonly');
     const store = tx.objectStore('decks');
-    return store.get(deckId)
-  })
-}
+    return store.get(deckId);
+  });
+};
 
-const getCards = deckId => {  
+const getCards = (deckId) => {
   const dbPromise = idb.open('flashcards');
   return dbPromise.then((db) => {
     const tx = db.transaction('cards', 'readonly');
@@ -41,10 +41,10 @@ const getCards = deckId => {
     if (!cursor) { return cards; }
     cards.push(cursor.value);
     return cursor.continue().then(cursor => showRange(cursor, cards));
-  })
-}
+  });
+};
 
-const getSides = cardId => {  
+const getSides = (cardId) => {
   const dbPromise = idb.open('flashcards');
   return dbPromise.then((db) => {
     const tx = db.transaction('sides', 'readonly');
@@ -55,16 +55,16 @@ const getSides = cardId => {
     if (!cursor) { return sides; }
     sides.push(cursor.value);
     return cursor.continue().then(cursor => showRange(cursor, sides));
-  })
-}
+  });
+};
 
-export const loadFullDeck = (deckId) => async (dispatch) => {
+export const loadFullDeck = deckId => async (dispatch) => {
   const deck = await getDeck(deckId);
   const cards = await getCards(deckId);
   const sides = await Promise.all(cards.map(async card => await getSides(card.id)));
 
-  sides.flatten().forEach(side => {
-    const card = cards.find(c => c.id === side.cardId)
+  sides.flatten().forEach((side) => {
+    const card = cards.find(c => c.id === side.cardId);
     if (!card.sides) {
       card.sides = [];
     }
@@ -79,9 +79,9 @@ export const loadFullDeck = (deckId) => async (dispatch) => {
 export default function allDecks(state = initialState, action) {
   switch (action.type) {
     case SET_DECKS:
-      return Object.assign({}, state, {decks: action.decks});
+      return Object.assign({}, state, { decks: action.decks });
     case SET_CURRENT_DECK:
-      return Object.assign({}, state, {currentDeck: action.deck});
+      return Object.assign({}, state, { currentDeck: action.deck });
     default:
       return state;
   }
