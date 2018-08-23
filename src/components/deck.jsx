@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loadFullDeck } from '../stores/decks';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
-=======
 import CramView from './cramView';
->>>>>>> Add a cram view
 
 class Deck extends React.Component {
   constructor(props) {
@@ -43,14 +40,9 @@ class Deck extends React.Component {
     </div>
   );
 
-  renderCramMode = () => {
-
-  }
-
   render() {
     return this.props.deck ? (
       <div>
-<<<<<<< HEAD
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><Link to='/'>Decks</Link></li>
@@ -61,9 +53,7 @@ class Deck extends React.Component {
         <div className="card-deck">
           {this.props.deck.cards.map(this.renderCard)}
         </div>
-=======
         { this.state.cramMode ? <CramView deck={this.props.deck} /> : this.renderCardList() }
->>>>>>> Add a cram view
       </div>
     ) : null;
   }
